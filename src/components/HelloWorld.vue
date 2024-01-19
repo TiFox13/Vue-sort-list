@@ -2,9 +2,6 @@
 
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
   data() {
     return {
       search: "",
@@ -58,12 +55,14 @@ export default {
     }
 }
 }
+
+
+
 </script>
 
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-   
+    <!-- <form name="search"> -->
     <label>
       <input 
         name="search"
@@ -74,10 +73,12 @@ export default {
       >
     </label>
     <p v-if="mes.search">{{mes.search}}</p>
+    <!-- </form> -->
     <ul>
       <li v-for="(city, index) in sortCites" v-bind:key="index">
         <!-- <span class="icon"></span> -->
-        <svg  class="icon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg @click="this.$store.dispatch('SET_SAVE', city)"
+         class="icon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5.5 12H19.5" stroke-width="1.5" />
           <path d="M12.5 19V5" stroke-width="1.5" />
         </svg>
