@@ -2,7 +2,7 @@ import {createRouter, createWebHistory } from 'vue-router';
 import { createApp } from 'vue';
 import { store } from './store';
 import App from './App.vue';
-import HelloWorld from './components/HelloWorld.vue';
+import Home from './components/Home.vue';
 import Saved from './components/Saved.vue';
 
 import './assets/style.css'
@@ -10,7 +10,7 @@ import './assets/style.css'
 const router = createRouter({
   history: createWebHistory(), 
   routes: [
-    { name: 'Home', path: '/', component: HelloWorld },
+    { name: 'Home', path: '/', component: Home },
     { name: 'Saved', path: '/saved', component: Saved }
   ]
 });

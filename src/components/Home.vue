@@ -1,7 +1,7 @@
 <script>
 
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   data() {
     return {
       search: "",
@@ -23,6 +23,12 @@ export default {
   'Александров', 
   'Ржев', 
   'Екатеринбург', 
+  'Абакан',
+  'Красногорск',
+  'Красноармейск',
+  'Краснодар',
+  'Пущино',
+  'Псков',
 ]
     }
   },
@@ -45,7 +51,7 @@ export default {
         this.mes['search'] = '';
         this.sort(value);
       } else{
-        this.mes['search'] = 'Введите город';
+        this.mes['search'] = 'Минимальная длина 2 символа';
       } 
 
     },
@@ -56,27 +62,25 @@ export default {
 }
 }
 
-
-
 </script>
 
 <template>
-  <div class="hello">
-    <!-- <form name="search"> -->
-    <label>
-      <input 
-        name="search"
-        v-model="search"
-        type="text" 
-        required 
-        minlength="2"
-      >
-    </label>
-    <p v-if="mes.search">{{mes.search}}</p>
-    <!-- </form> -->
+  <div class="home">
+    <form name="form">
+      <label class="form-label"> Введите город
+        <input 
+          class="form-item"
+          name="search"
+          v-model="search"
+          type="text" 
+          required 
+          minlength="2"
+        >
+      </label>
+      <p class="form-error" v-if="mes.search">{{mes.search}}</p>
+    </form>
     <ul>
       <li v-for="(city, index) in sortCites" v-bind:key="index">
-        <!-- <span class="icon"></span> -->
         <svg @click="this.$store.dispatch('SET_SAVE', city)"
          class="icon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5.5 12H19.5" stroke-width="1.5" />
@@ -87,3 +91,34 @@ export default {
     </ul>
   </div>
 </template>
+
+<style scoped>
+  .home {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+  }
+
+  form {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .form-label {
+    color: white;
+    width: 100%;
+    display: block;
+  }
+
+  .form-item {
+    width: 100%;
+    display: block;
+    margin-top: 8px;
+  }
+
+  .form-error {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color:  rgb(217, 125, 46);
+  }
+</style>
